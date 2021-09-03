@@ -1,0 +1,35 @@
+Work Cited for Code: 
+HTML generated documents:
+	http://ashkenas.com/docco/
+Scripts.js: 
+	https://code-boxx.com/create-table-from-array-javascript/ 
+	https://mkyong.com/javascript/javascript-get-selected-value-from-dropdown-list/
+
+CreateEvent.js: 
+	https://stackoverflow.com/questions/20684737/force-leading-zero-in-number-input
+
+SeeEvent.js: 
+	No sources to cite 
+
+People.js: 
+	No sources to cite 
+
+PopulateEventDropdown.js: 
+	No sources to cite
+
+Underscore.js: 
+	https://underscorejs.org
+
+Availability.html: 
+	No sources to cite 
+
+CreateEvent.html: 
+	https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/date
+	https://code.jquery.com/jquery-3.4.1.js
+
+PostSub.html: 
+	No sources to cite 
+
+Index.html: 
+	No sources to cite
+

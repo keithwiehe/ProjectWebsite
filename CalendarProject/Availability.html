@@ -1,0 +1,40 @@
+<DOCTYPE! html>
+<html lang="en">
+<head>
+  <title>User Page</title>
+    <link rel="stylesheet" href="./stylesheet.css">
+    <!-- <script src="Megan's JS"></script> -->
+</head>
+<body>
+  <label for="userid">Please enter your name: </label>
+  <input id="userid" type=textarea>
+  <label for="Events">Please select an event:</label>
+  <select id="Events" seleceted="selected">
+<!--      comment below three options out-->
+<!--  <option value=""></option>-->
+<!--    <option value=""></option>-->
+<!--      <option value=""></option>-->
+    </select>
+  <script src="./populateEventDropdown.js"></script>
+<br>
+<br>
+<br>
+    <label for="time">Please select a time format: </label>
+    <div class="time">
+<br>
+      <button id='12hrButton' type='button'>AM/PM</button>
+      <button id='24hrButton' type='button'>Military</button>
+    </div>
+<script src="./scripts.js"></script>
+    <br>
+    <div class="table" id="container">
+    </div>
+    <br>
+    <br>
+
+<button type="button" onclick="GetSelectedText();createPeople()">Submit Availability</a></button>
+    <!-- <button class="Save"><a href="postsub.html">Save</a></button> -->
+    <script src="./People.js"></script>
+
+</body>
+</html>

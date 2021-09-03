@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <title>CreateEvent.js</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, target-densitydpi=160dpi, initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
+  <link rel="stylesheet" media="all" href="docco.css" />
+</head>
+<body>
+  <div id="container">
+    <div id="background"></div>
+    
+    <ul class="sections">
+        
+          <li id="title">
+              <div class="annotation">
+                  <h1>CreateEvent.js</h1>
+              </div>
+          </li>
+        
+        
+        
+        <li id="section-1">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-1">&#182;</a>
+              </div>
+              
+            </div>
+            
+            <div class="content"><div class='highlight'><pre><span class="hljs-keyword">var</span> timearray = [];
+
+<span class="hljs-built_in">window</span>.addEventListener(<span class="hljs-string">"load"</span>, setMilitary());
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">Event</span> (<span class="hljs-params">name, date, details, arrayOfTimes</span>)
+</span>{
+    <span class="hljs-keyword">this</span>.eventName = name;
+    <span class="hljs-keyword">this</span>.eventDate = date;
+    <span class="hljs-keyword">this</span>.eventDetails = details;
+    <span class="hljs-keyword">this</span>.eventTimeArray = arrayOfTimes;
+}</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-2">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-2">&#182;</a>
+              </div>
+              <p>Source: <a href="https://stackoverflow.com/questions/20684737/force-leading-zero-in-number-input">https://stackoverflow.com/questions/20684737/force-leading-zero-in-number-input</a>
+The following function has code taked from: <a href="https://stackoverflow.com/questions/20684737/force-leading-zero-in-number-input">https://stackoverflow.com/questions/20684737/force-leading-zero-in-number-input</a>
+The source was used to put a leading zeros infront of single digit numbers for start and ending times
+This function is used to make sure 20 minute increments are used for the event times</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">checkMinute</span>(<span class="hljs-params">time</span>)
+</span>{
+    <span class="hljs-keyword">if</span> (time / <span class="hljs-number">20</span> &lt; <span class="hljs-number">1</span>)
+    {
+	time = <span class="hljs-string">'00'</span>;
+    }
+    <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (time / <span class="hljs-number">20</span> &lt; <span class="hljs-number">2</span>)
+    {
+	time = <span class="hljs-string">'20'</span>;
+    }
+    <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (time / <span class="hljs-number">20</span> &lt; <span class="hljs-number">3</span>)
+    {
+	time = <span class="hljs-string">'40'</span>;
+    }
+    <span class="hljs-keyword">return</span> (time);
+}</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-3">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-3">&#182;</a>
+              </div>
+              <p>This function creates the event</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">createEvent</span>(<span class="hljs-params"></span>)
+</span>{
+    <span class="hljs-keyword">var</span> eTimeArray = [];<span class="hljs-comment">//creating an array to store the events created</span>
+        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">var</span> i=<span class="hljs-number">0</span>;i&lt;timearray.length;i++)<span class="hljs-comment">//loop goes through the time array</span>
+        {</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-4">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-4">&#182;</a>
+              </div>
+              <p>getting a specific time</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        <span class="hljs-keyword">var</span> e = <span class="hljs-built_in">document</span>.getElementById((<span class="hljs-string">'avail'</span>+i));
+        <span class="hljs-keyword">if</span>(e!=<span class="hljs-literal">null</span>)<span class="hljs-comment">//skips if timetable cells = "-select-"</span>
+        {</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-5">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-5">&#182;</a>
+              </div>
+              <p>getting the yes or no answer of availability for a certain time in the event</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        <span class="hljs-keyword">var</span> result = e.options[e.selectedIndex].text;
+        <span class="hljs-keyword">if</span> (result === <span class="hljs-string">'Yes'</span>)<span class="hljs-comment">//only stores YES times</span>
+        {
+        eTimeArray.push(timearray[i]);
+        }
+        <span class="hljs-built_in">console</span>.log(eTimeArray);
+      }
+    }
+
+    <span class="hljs-keyword">var</span> eName = <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">'Name input'</span>).value;<span class="hljs-comment">//variable that gets the name of the event</span>
+    <span class="hljs-keyword">var</span> eDate = <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">'today'</span>).value;<span class="hljs-comment">//variable that gets the date of the event</span>
+    <span class="hljs-keyword">var</span> eDetails = <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">'Details'</span>).value;<span class="hljs-comment">//variable that gets the details of the event</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-6">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-6">&#182;</a>
+              </div>
+              <p>The following statments are error cases that need to be addressed</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    <span class="hljs-keyword">if</span> (eName === <span class="hljs-string">''</span> || eDate === <span class="hljs-string">''</span>)
+    {
+	alert (<span class="hljs-string">"Error: Empty Field(s)."</span>);
+    }
+    <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (eTimeArray.length === <span class="hljs-number">0</span>)
+    {
+	alert (<span class="hljs-string">"Error: No Available Time Slot(s)."</span>);
+    }
+    <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (eDate.includes(<span class="hljs-string">'-12-25'</span>) || eDate.includes(<span class="hljs-string">'-01-01'</span>) || eDate.includes(<span class="hljs-string">'-07-04'</span>))
+    {
+	alert (<span class="hljs-string">"Error: Invalid date selected"</span>);
+    }</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-7">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-7">&#182;</a>
+              </div>
+              <p>if not error cases pushes event into the array then localStorage</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    <span class="hljs-keyword">else</span>
+    {
+	<span class="hljs-keyword">let</span> newEvent = <span class="hljs-keyword">new</span> Event(eName, eDate, eDetails, eTimeArray)<span class="hljs-comment">//creating the event</span>
+	eventArray.push(newEvent);<span class="hljs-comment">//adding the event to the event Array</span>
+	alert(<span class="hljs-string">"Event made.\n"</span> + eName + <span class="hljs-string">'\n'</span> + eDate + <span class="hljs-string">'\n'</span> + eDetails);<span class="hljs-comment">//alerting the admin the event was successfully created</span>
+	<span class="hljs-built_in">console</span>.log(eventArray);</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-8">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-8">&#182;</a>
+              </div>
+              <p>storing the event array in local storage</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>	<span class="hljs-built_in">window</span>.localStorage.setItem(<span class="hljs-string">'arrayofevents'</span>,<span class="hljs-built_in">JSON</span>.stringify(eventArray));
+	<span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">JSON</span>.parse(<span class="hljs-built_in">window</span>.localStorage.getItem(<span class="hljs-string">'arrayofevents'</span>)));
+    }
+    <span class="hljs-built_in">window</span>.location.href=<span class="hljs-string">"postsub.html"</span>;
+}</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-9">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-9">&#182;</a>
+              </div>
+              <p>This function is used to display the time options in a 12 hour format</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">setAMPM</span>(<span class="hljs-params"></span>)
+</span>{</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-10">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-10">&#182;</a>
+              </div>
+              <p>creating the array to store the 12 hour values</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>  <span class="hljs-keyword">var</span> twelvehrarray=[];</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-11">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-11">&#182;</a>
+              </div>
+              <p>defining the start and end times that meet the requirements of the calendar</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>  <span class="hljs-keyword">var</span> starthr=<span class="hljs-number">5</span>;
+  <span class="hljs-keyword">var</span> startmin=<span class="hljs-number">00</span>;
+  <span class="hljs-keyword">var</span> endhr=<span class="hljs-number">23</span>;
+  <span class="hljs-keyword">var</span> endmin=<span class="hljs-number">59</span>;</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-12">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-12">&#182;</a>
+              </div>
+              <p>totaltime and endtime are used to take time and make it quantifiable</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>  <span class="hljs-keyword">var</span> totaltime=starthr*<span class="hljs-number">60</span>+startmin;
+  <span class="hljs-keyword">var</span> endtime=endhr*<span class="hljs-number">60</span>+endmin;</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-13">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-13">&#182;</a>
+              </div>
+              <p>increase by 20 because each time increment is 20 minutes</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>  <span class="hljs-keyword">for</span>(totaltime;totaltime&lt;endtime;totaltime+=<span class="hljs-number">20</span>)
+  {
+    hr=<span class="hljs-built_in">Math</span>.floor(totaltime/<span class="hljs-number">60</span>);<span class="hljs-comment">//function is used to calculate the hour for the event</span>
+    newmin=totaltime%<span class="hljs-number">60</span>;<span class="hljs-comment">//used to calculate the 20 minutes increments</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-14">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-14">&#182;</a>
+              </div>
+              <p>addressing the times that start with 0 and end with a number 1-9</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    <span class="hljs-keyword">if</span>(newmin&lt;<span class="hljs-number">10</span>)
+    {
+      startmin=<span class="hljs-string">'0'</span>+newmin;
+    }</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-15">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-15">&#182;</a>
+              </div>
+              <p>addressing times that do not start with 0</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    <span class="hljs-keyword">if</span>(newmin&gt;<span class="hljs-number">10</span>)
+    {
+      startmin=newmin;
+    }</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-16">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-16">&#182;</a>
+              </div>
+              <p>creating the pm 12 hour start times</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    <span class="hljs-keyword">if</span>(hr != <span class="hljs-number">12</span>)
+    {
+        <span class="hljs-keyword">if</span>(hr&gt;<span class="hljs-number">12</span>)
+        {
+          hr=hr<span class="hljs-number">-12</span>;
+	        twelvehrarray.push(hr + <span class="hljs-string">":"</span> + startmin + <span class="hljs-string">" PM"</span>);<span class="hljs-comment">//adding the 12 hour start times to the time array that increases in 20 minute increments</span>
+        }
+	<span class="hljs-keyword">else</span>
+	{
+            twelvehrarray.push(hr + <span class="hljs-string">":"</span> + startmin + <span class="hljs-string">" AM"</span>);<span class="hljs-comment">//adding the 12 hour start times to the time array that increases in 20 minute increments</span>
+	}
+    }
+  }
+    <span class="hljs-keyword">if</span>(endhr&gt;<span class="hljs-number">12</span>)<span class="hljs-comment">//creating the pm 12 hour end time</span>
+    {
+      endhr=endhr<span class="hljs-number">-12</span>;
+    }
+    twelvehrarray.push(endhr + <span class="hljs-string">":"</span> + endmin + <span class="hljs-string">" PM"</span>);<span class="hljs-comment">//adding the 12 hour end times to the time array that increases in 20 minute increments</span>
+
+  <span class="hljs-keyword">var</span> perrow = <span class="hljs-number">3</span>, <span class="hljs-comment">// 3 items per row</span>
+      html = <span class="hljs-string">"&lt;table&gt;&lt;tr&gt;"</span>;<span class="hljs-comment">//create HTML table</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-17">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-17">&#182;</a>
+              </div>
+              <p>loop goes though and generates the time ranges</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> i=<span class="hljs-number">0</span>; i&lt;twelvehrarray.length<span class="hljs-number">-1</span>; i++) {
+        <span class="hljs-keyword">if</span> (twelvehrarray[i] === <span class="hljs-string">"11:40 AM"</span>)
+        {
+	  twelvehrarray[i]=twelvehrarray[i] + <span class="hljs-string">"-"</span> + <span class="hljs-string">"12:00 PM"</span><span class="hljs-comment">//creates and adds 11:40-12:00 pm to the twelve hour array</span>
+        }
+	<span class="hljs-keyword">else</span>
+	{
+	  twelvehrarray[i]=twelvehrarray[i] + <span class="hljs-string">"-"</span> + twelvehrarray[i+<span class="hljs-number">1</span>];<span class="hljs-comment">//creates and adds the rest of the time ranges</span>
+          <span class="hljs-keyword">if</span>(twelvehrarray[i+<span class="hljs-number">1</span>]==<span class="hljs-string">"undefined"</span>)<span class="hljs-comment">//allows the loop to end</span>
+          {
+            <span class="hljs-keyword">break</span>;
+          }
+	}</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-18">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-18">&#182;</a>
+              </div>
+              <p>Adding the times to the HTML table and formating it with the selection option</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        html += <span class="hljs-string">"&lt;td&gt;"</span> + twelvehrarray[i] + <span class="hljs-string">"&lt;br&gt;"</span> + <span class="hljs-string">"&lt;select id='"</span>+(<span class="hljs-string">'avail'</span>+i)+<span class="hljs-string">"'&gt;"</span> + <span class="hljs-string">"&lt;option value='None'&gt;-- Select --&lt;/option&gt;"</span> + <span class="hljs-string">"&lt;option value ='No'&gt;No&lt;/option&gt;"</span> + <span class="hljs-string">"&lt;option value ='Yes'&gt;Yes&lt;/option&gt;"</span> + <span class="hljs-string">"&lt;/td&gt;"</span>;</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-19">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-19">&#182;</a>
+              </div>
+              <p>Break into next row</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        <span class="hljs-keyword">var</span> next = i+<span class="hljs-number">1</span>;<span class="hljs-comment">//next is used to determine when a new row is needed</span>
+        <span class="hljs-keyword">if</span> (next%perrow==<span class="hljs-number">0</span> &amp;&amp; next!=twelvehrarray.length) {<span class="hljs-comment">//checking if next is divisible by 3 and the array is not</span>
+          html += <span class="hljs-string">"&lt;/tr&gt;&lt;tr&gt;"</span>;<span class="hljs-comment">//creating new row</span>
+        }
+      }
+      html += <span class="hljs-string">"&lt;/tr&gt;&lt;/table&gt;"</span>;<span class="hljs-comment">//completing the table</span>
+
+  <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">"container"</span>).innerHTML=html;
+}</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-20">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-20">&#182;</a>
+              </div>
+              <p>displays the time increments in military time if 24 hour format is selected or by default</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">setMilitary</span>(<span class="hljs-params"></span>)
+</span>{
+timearray = [];<span class="hljs-comment">//creating the time array store the military time values</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-21">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-21">&#182;</a>
+              </div>
+              <p>defining the start and end times that meet the requirements of the calendar</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>  <span class="hljs-keyword">var</span> starthr=<span class="hljs-number">5</span>;
+  <span class="hljs-keyword">var</span> startmin=<span class="hljs-number">00</span>;
+  <span class="hljs-keyword">var</span> endhr=<span class="hljs-number">23</span>;
+  <span class="hljs-keyword">var</span> endmin=<span class="hljs-number">59</span>;</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-22">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-22">&#182;</a>
+              </div>
+              <p>totaltime and endtime are used to take time and make it quantifiable</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>  <span class="hljs-keyword">var</span> totaltime=starthr*<span class="hljs-number">60</span>+startmin;
+  <span class="hljs-keyword">var</span> endtime=endhr*<span class="hljs-number">60</span>+endmin;
+
+  <span class="hljs-keyword">for</span>(totaltime;totaltime&lt;endtime;totaltime+=<span class="hljs-number">20</span>)
+  {
+    hr=<span class="hljs-built_in">Math</span>.floor(totaltime/<span class="hljs-number">60</span>);<span class="hljs-comment">//function is used to calculate the hour for the event</span>
+    newmin=totaltime%<span class="hljs-number">60</span>;<span class="hljs-comment">//used to calculate the 20 minutes increments</span>
+
+    <span class="hljs-keyword">if</span>(newmin&lt;<span class="hljs-number">10</span>)
+    {
+      startmin=<span class="hljs-string">'0'</span>+newmin;<span class="hljs-comment">//addressing the times that start with 0 and end with a number 1-9</span>
+    }
+    <span class="hljs-keyword">if</span>(newmin&gt;<span class="hljs-number">10</span>)
+    {
+      startmin=newmin;<span class="hljs-comment">//addressing times that do not start with 0</span>
+    }
+    <span class="hljs-keyword">if</span> (hr != <span class="hljs-number">12</span>)
+    {
+	timearray.push(hr + <span class="hljs-string">":"</span> + startmin);<span class="hljs-comment">//adding the start hour to the array that are not 12</span>
+    }
+  }
+  <span class="hljs-keyword">if</span> (hr != <span class="hljs-number">12</span>)
+  {
+    timearray.push(endhr + <span class="hljs-string">":"</span> + endmin);<span class="hljs-comment">//adding the end hour to the array that are not 12</span>
+  }
+
+<span class="hljs-keyword">var</span> perrow = <span class="hljs-number">3</span>, <span class="hljs-comment">// 3 items per row</span>
+        html = <span class="hljs-string">"&lt;table&gt;&lt;tr&gt;"</span>;<span class="hljs-comment">//create table</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-23">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-23">&#182;</a>
+              </div>
+              <p>this loop creates the military time array</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> i=<span class="hljs-number">0</span>; i&lt;timearray.length<span class="hljs-number">-1</span>; i++) {
+      <span class="hljs-built_in">console</span>.log(timearray[i]);
+	  <span class="hljs-keyword">if</span> (timearray[i] === <span class="hljs-string">"11:40"</span>)
+	  {
+	    timearray[i] = timearray[i] + <span class="hljs-string">"-12:00"</span><span class="hljs-comment">//creating the 11:40-12:00 pm time range for the military time</span>
+	  }
+	  <span class="hljs-keyword">else</span>
+	  {
+	    timearray[i] = timearray[i] + <span class="hljs-string">"-"</span> + timearray[i+<span class="hljs-number">1</span>];<span class="hljs-comment">//creates and adds the rest of the time ranges</span>
+	  }</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-24">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-24">&#182;</a>
+              </div>
+              <p>Adding the times to the HTML table and formating it with the selection option</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>          html += <span class="hljs-string">"&lt;td&gt;"</span> + timearray[i] + <span class="hljs-string">"&lt;br&gt;"</span> + <span class="hljs-string">"&lt;select id='"</span>+(<span class="hljs-string">'avail'</span>+i)+<span class="hljs-string">"'&gt;"</span> + <span class="hljs-string">"&lt;option value='None'&gt;-- Select --&lt;/option&gt;"</span> + <span class="hljs-string">"&lt;option value ='ID001'&gt;No&lt;/option&gt;"</span> + <span class="hljs-string">"&lt;option value ='ID002'&gt;Yes&lt;/option&gt;"</span> + <span class="hljs-string">"&lt;/td&gt;"</span>;
+          <span class="hljs-keyword">var</span> next = i+<span class="hljs-number">1</span>;<span class="hljs-comment">//next is used to determine when a new row is needed</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-25">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-25">&#182;</a>
+              </div>
+              <p>checking if next is divisible by 3 and the array is not</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>          <span class="hljs-keyword">if</span> (next%perrow==<span class="hljs-number">0</span> &amp;&amp; next!=timearray.length) {
+            html += <span class="hljs-string">"&lt;/tr&gt;&lt;tr&gt;"</span>;<span class="hljs-comment">//adds new row</span>
+          }
+        }
+    html += <span class="hljs-string">"&lt;/tr&gt;&lt;/table&gt;"</span>;<span class="hljs-comment">//complete table</span>
+    <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">"container"</span>).innerHTML=html;
+}</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-26">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-26">&#182;</a>
+              </div>
+              <p>used to check if array of events in local storage is empty</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre><span class="hljs-keyword">if</span>(<span class="hljs-built_in">JSON</span>.parse(<span class="hljs-built_in">window</span>.localStorage.getItem(<span class="hljs-string">'arrayofevents'</span>))!=<span class="hljs-literal">null</span>){</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-27">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-27">&#182;</a>
+              </div>
+              <p>if local storage is not empty, the event array is filled with the array of events in local storage</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    <span class="hljs-keyword">var</span> eventArray=<span class="hljs-built_in">JSON</span>.parse(<span class="hljs-built_in">window</span>.localStorage.getItem(<span class="hljs-string">'arrayofevents'</span>))
+}
+<span class="hljs-keyword">else</span>{</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-28">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-28">&#182;</a>
+              </div>
+              <p>creates an empty event array if local storage is empty</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    <span class="hljs-keyword">var</span> eventArray = [];
+}
+
+<span class="hljs-keyword">var</span> createeventbutton = <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">'createeventbutton'</span>);<span class="hljs-comment">//defining the button that will activate the create event button</span>
+createeventbutton.addEventListener(<span class="hljs-string">'click'</span>, createEvent, <span class="hljs-literal">false</span>);<span class="hljs-comment">//when the create event button is pressed, it will run the create event function</span>
+
+<span class="hljs-keyword">var</span> ampm = <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">'ampm'</span>);<span class="hljs-comment">//defining the button that will activate the am/pm function</span>
+ampm.addEventListener(<span class="hljs-string">'click'</span>, setAMPM, <span class="hljs-literal">false</span>);<span class="hljs-comment">//when the button is pressed, it will run the setAMPM function</span>
+
+<span class="hljs-keyword">var</span> military = <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">'military'</span>);<span class="hljs-comment">//defining the button that will activate the miliatry function</span>
+military.addEventListener(<span class="hljs-string">'click'</span>, setMilitary, <span class="hljs-literal">false</span>);<span class="hljs-comment">//when the button is clicked, it will run the setMilitary function</span></pre></div></div>
+            
+        </li>
+        
+    </ul>
+  </div>
+</body>
+</html>

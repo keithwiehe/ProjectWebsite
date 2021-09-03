@@ -1,0 +1,3 @@
+At first we started with waterfall model. In this model we gave each person an individual role to complete.
+Shortly, after starting the project and coding we discovered this was not a good idea, and quickly changed to agile.
+With an agile style we completed minimal requirements one at a time and built up a working product.

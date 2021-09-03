@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Admin Page</title>
+  <link rel="stylesheet" href="./stylesheet.css">
+<body>
+  <div class='wrapper'>
+  <form-id='Admin Form'>
+  <label id='Name of Event' for "Name of Event">Name of Event</label>
+  <input id='Name input' type="text"><br><br>
+  <!--https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/date-->
+  <label for='Event Date'>Event Date: </label>
+  <input id="today" type="date">
+  <br><br>
+  <button id='ampm' type='button'>AM/PM</button>
+  <button id='military' type='button'>Military Time</button>
+  <br>
+  <div class="table" id="container">
+  </div>
+  <br>
+  <label for='Details of Event'>Details of Event:</label>
+  <input id='Details' type='text' size='60'>
+  <br>
+  <button id='createeventbutton' type='button'>Create Event</button>
+<script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+  <script src="./CreateEvent.js"></script>
+  <br>
+  <br>
+  <label for="Events">Please select an event:</label>
+  <select id="Events">
+    </select>
+  <script src="./populateEventDropdown.js"></script>
+  <button id='seeEvent' type='button'>See Event Details</button>
+  <br>
+  <span id='eName'></span>
+  <br>
+  <span id='eDetails'></span>
+  <br>
+  <span class='table' id='peopleRegistered'></span>
+  <br>
+  <span id='avail'></span>
+  <script src="./SeeEvent.js"></script>
+  <button type="button"><a href="index.html">Home Page</a></button>
+</div>
+</form>
+</body>
+</html>

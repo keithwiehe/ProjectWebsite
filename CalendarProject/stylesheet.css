@@ -1,0 +1,70 @@
+/* <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"> */
+
+div.Title {
+  text-align: center;
+  font-family: cursive;
+  font-size: 50px;
+}
+
+h3 {
+  text-align: center;
+}
+
+.Admin {
+background-color: red;
+padding: 35px 35px;
+justify-content: center;
+display:inline;
+align: middle;
+font-size: 15px;
+}
+
+.User{
+  background-color: blue;
+  padding: 35px 35px;
+  top: 25%
+  text-align:center;
+  font-size: 15px;
+}
+
+.Admin:hover {
+  color:blue;
+  background:white;
+}
+
+.User:hover {
+  color:blue;
+  background:white;
+}
+
+.buttonlayout {
+  text-align:center;
+}
+
+#Details {
+  height: 50px;
+}
+
+.table {
+    border-collapse: collapse;
+}
+
+.table tr td {
+    border: 1px solid #000;
+    padding: 10px;
+}
+
+/*.table td:active
+{
+    background-color:lightgreen;
+}*/
+
+.chkbox
+{
+
+}
+
+.table td:visited
+{
+    background-color: lightgreen;
+}
